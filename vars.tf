@@ -31,3 +31,12 @@ variable "subnets" {
 variable "sg_ingress_cidr" {
   
 }
+variable "internal" {
+  
+}
+variable "instance_type" {
+  
+}
+variable "component" {
+  
+}

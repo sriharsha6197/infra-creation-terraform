@@ -24,7 +24,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 
 resource "aws_lb" "test" {
   name               = "${var.env}-${var.alb_type}-lb"
-  internal           = false
+  internal           = var.internal
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow_tls.id]
   subnets            = var.subnets
