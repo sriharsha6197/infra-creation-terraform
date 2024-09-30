@@ -40,3 +40,6 @@ variable "instance_type" {
 variable "component" {
   
 }
+variable "app_port" {
+  
+}

@@ -9,12 +9,11 @@ resource "aws_security_group" "allow_tls" {
 }
 
 resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4" {
-  for_each = var.from_port
   security_group_id = aws_security_group.allow_tls.id
   cidr_ipv4         = var.sg_ingress_cidr
-  from_port         = each.value
+  from_port         = var.app_port
   ip_protocol       = "tcp"
-  to_port           = each.value
+  to_port           = var.app_port
 }
 resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   security_group_id = aws_security_group.allow_tls.id
