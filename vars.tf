@@ -19,3 +19,12 @@ variable "private_azs" {
 variable "from_port" {
   type = set(string)
 }
+variable "vpc_id" {
+  
+}
+variable "alb_type" {
+  
+}
+variable "subnets" {
+  
+}
