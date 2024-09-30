@@ -32,3 +32,14 @@ resource "aws_internet_gateway" "igw" {
     Name = "${var.env}-igw"
   }
 }
+resource "aws_route_table" "pb_route-tables" {
+  for_each = zipmap(range(length(var.public_subnets)),var.public_subnets)
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_internet_gateway.igw.id
+  }
+  tags = {
+    Name = "${var.env}-pb-route-table-${each.key + 1}"
+  }
+}
