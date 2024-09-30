@@ -55,3 +55,12 @@ resource "aws_eip" "eip" {
     Name = "${var.env}-eip-${each.key+1}"
   }
 }
+resource "aws_nat_gateway" "example" {
+  for_each = zipmap(range(length(var.private_subnets)),var.private_subnets)
+  allocation_id = aws_eip.eip[each.key].id
+  subnet_id     = aws_subnet.public_subnet[each.key].id
+
+  tags = {
+    Name = "${var.env}-ngw-${each.key+1}"
+  }
+}
