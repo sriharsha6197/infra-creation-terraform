@@ -44,7 +44,7 @@ resource "aws_route_table" "pb_route-tables" {
   }
 }
 resource "aws_route_table_association" "a" {
-  for_each = zipmap(range(length(aws_subnet.public_subnet)),aws_subnet.public_subnet)
+  for_each = zipmap(range(length(var.public_subnets)),var.public_subnets)
   subnet_id      = aws_subnet.public_subnet[each.key].id
   route_table_id = aws_route_table.pb_route-tables[each.key].id
 }
