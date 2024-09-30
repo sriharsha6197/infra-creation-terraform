@@ -11,7 +11,7 @@ module "vpc" {
 module "public" {
   source = "./modules/lb"
   env = var.env
-  alb_type = public
+  alb_type = "public"
   vpc_id = module.vpc.vpc_id
   from_port = var.from_port
   subnets = module.vpc.PB_SUBNETs
