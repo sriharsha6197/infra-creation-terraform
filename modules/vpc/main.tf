@@ -64,3 +64,19 @@ resource "aws_nat_gateway" "example" {
     Name = "${var.env}-ngw-${each.key+1}"
   }
 }
+resource "aws_route_table" "pvt_route-tables" {
+  for_each = zipmap(range(length(var.private_subnets)),var.private_subnets)
+  vpc_id = aws_vpc.main.id
+  route {
+    cidr_block = "0.0.0.0/0"
+    gateway_id = aws_nat_gateway.example[each.key].id
+  }
+  tags = {
+    Name = "${var.env}-pvt-route-table-${each.key + 1}"
+  }
+}
+resource "aws_route_table_association" "pvt" {
+  for_each = zipmap(range(length(var.private_subnets)),var.private_subnets)
+  subnet_id      = aws_subnet.private_subnet[each.key].id
+  route_table_id = aws_route_table.pvt_route-tables[each.key].id
+}
