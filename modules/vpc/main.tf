@@ -43,3 +43,8 @@ resource "aws_route_table" "pb_route-tables" {
     Name = "${var.env}-pb-route-table-${each.key + 1}"
   }
 }
+resource "aws_route_table_association" "a" {
+  for_each = zipmap(range(length(aws_subnet.public_subnet)),aws_subnet.public_subnet)
+  subnet_id      = aws_subnet.public_subnet[each.key].id
+  route_table_id = aws_route_table.pb_route-tables[each.key].id
+}
