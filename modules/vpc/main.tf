@@ -12,6 +12,6 @@ resource "aws_subnet" "public_subnet" {
   availability_zone = var.azs[each.key]
 
   tags = {
-    Name = "${var.env}-public-subnet-${each.key}+1"
+    Name = "${var.env}-public-subnet-${each.key + 1}"
   }
 }
