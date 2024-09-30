@@ -13,3 +13,6 @@ variable "from_port" {
 variable "subnets" {
   
 }
+variable "sg_ingress_cidr" {
+  
+}

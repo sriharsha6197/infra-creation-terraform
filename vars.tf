@@ -28,3 +28,6 @@ variable "alb_type" {
 variable "subnets" {
   
 }
+variable "sg_ingress_cidr" {
+  
+}
