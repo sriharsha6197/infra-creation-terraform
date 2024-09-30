@@ -6,4 +6,5 @@ module "vpc" {
   azs = var.azs
   private_subnets = var.private_subnets
   private_azs = var.private_azs
+  from_port = var.from_port
 }
