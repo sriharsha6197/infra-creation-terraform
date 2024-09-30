@@ -48,3 +48,10 @@ resource "aws_route_table_association" "a" {
   subnet_id      = aws_subnet.public_subnet[each.key].id
   route_table_id = aws_route_table.pb_route-tables[each.key].id
 }
+resource "aws_eip" "eip" {
+  for_each = zipmap(range(length(var.private_subnets)),var.private_subnets)
+  domain   = "vpc"
+  tags = {
+    Name = "${var.env}-eip-${each.key+1}"
+  }
+}
