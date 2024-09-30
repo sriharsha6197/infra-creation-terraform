@@ -17,5 +17,5 @@ variable "private_azs" {
   
 }
 variable "from_port" {
-  
+  type = set(string)
 }
