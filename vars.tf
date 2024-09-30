@@ -43,3 +43,6 @@ variable "component" {
 variable "app_port" {
   
 }
+variable "terraform_controller_instance" {
+  
+}

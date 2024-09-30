@@ -19,3 +19,6 @@ variable "subnets" {
 variable "app_port" {
   
 }
+variable "terraform_controller_instance" {
+  
+}
