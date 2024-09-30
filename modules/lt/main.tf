@@ -22,7 +22,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 }
 
 resource "aws_launch_template" "foo" {
-  name = "${var.env}-lt-${var.component}"
+  name = "${var.env}-${var.component}"
   image_id = data.aws_ami.example.id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
