@@ -109,6 +109,6 @@ resource "aws_vpc_peering_connection" "foo" {
   vpc_id        = aws_vpc.main.id
   auto_accept = true
   tags = {
-    Name = "Peering connection between ${aws_vpc.main.tags["Name"]} and ${data.aws_vpc.default.id.tags["Name"]}"
+    Name = "Peering connection between ${aws_vpc.main.tags["Name"]} and ${data.aws_vpc.default.tags["Name"]}"
   }
 }
