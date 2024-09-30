@@ -19,3 +19,6 @@ variable "private_azs" {
 variable "from_port" {
   
 }
+variable "default_vpc" {
+  default = "vpc-019eb600d42615e77"
+}

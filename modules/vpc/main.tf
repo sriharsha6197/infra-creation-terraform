@@ -103,3 +103,12 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1" # semantically equivalent to all ports
 }
+resource "aws_vpc_peering_connection" "foo" {
+  peer_owner_id = aws_vpc.main.owner_id
+  peer_vpc_id   = data.aws_vpc.default.id
+  vpc_id        = aws_vpc.main.id
+  auto_accept = true
+  tags = {
+    Name = "Peering connection between ${aws_vpc.main.tags.Name} and ${data.aws_vpc.default.id.tags.Name}"
+  }
+}
