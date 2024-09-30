@@ -6,3 +6,4 @@ azs = ["us-east-1a","us-east-1b"]
 private_azs = ["us-east-1c","us-east-1d"]
 from_port = [443,80,22]
 alb_type = ""
+subnets = ""
