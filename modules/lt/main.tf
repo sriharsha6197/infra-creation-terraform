@@ -27,7 +27,57 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
   cidr_ipv4         = "0.0.0.0/0"
   ip_protocol       = "-1" # semantically equivalent to all ports
 }
+resource "aws_iam_role" "test_role" {
+  name = "${var.env}-${var.component}-role"
 
+  assume_role_policy = jsonencode({
+    Version = "2012-10-17"
+    Statement = [
+      {
+        Action = "sts:AssumeRole"
+        Effect = "Allow"
+        Sid    = ""
+        Principal = {
+          Service = "ec2.amazonaws.com"
+        }
+      },
+    ]
+  })
+
+  inline_policy {
+    name = "${var.env}-${var.component}-policy"
+
+    policy = jsonencode({
+      Version = "2012-10-17"
+      Statement = [
+        {
+          Action   = [
+        "ssm:PutParameter",
+				"ssm:LabelParameterVersion",
+				"ssm:DeleteParameter",
+				"ssm:UnlabelParameterVersion",
+				"ssm:DescribeParameters",
+				"ssm:GetParameterHistory",
+				"ssm:DescribeDocumentParameters",
+				"ssm:GetParametersByPath",
+				"ssm:GetParameters",
+				"ssm:GetParameter",
+				"ssm:DeleteParameters"
+        ],
+          Effect   = "Allow"
+          Resource = "*"
+        },
+      ]
+    })
+  }
+  tags = {
+    tag-key = "${var.env}-${var.component}-role"
+  }
+}
+resource "aws_iam_instance_profile" "test_profile" {
+  name = "${var.env}-${var.component}-iam-instance-profile"
+  role = aws_iam_role.test_role.name
+}
 resource "aws_launch_template" "foo" {
   name = "${var.env}-${var.component}"
   image_id = data.aws_ami.example.id
