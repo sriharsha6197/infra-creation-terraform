@@ -33,7 +33,7 @@ resource "aws_launch_template" "foo" {
   image_id = data.aws_ami.example.id
   instance_type = var.instance_type
   vpc_security_group_ids = [aws_security_group.allow_tls.id]
-  user_data = templatefile("${path.module},userdata.sh",{
+  user_data = templatefile("${path.module}/userdata.sh",{
     role_name = var.component
   })
   tag_specifications {
