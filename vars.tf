@@ -52,9 +52,6 @@ variable "engine" {
 variable "engine_version" {
   
 }
-variable "env" {
-  
-}
 variable "instance_class" {
   
 }
