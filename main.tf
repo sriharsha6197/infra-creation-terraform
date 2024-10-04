@@ -50,3 +50,14 @@ module "backend" {
   vpc_id = module.vpc.vpc_id
   subnets = module.vpc.PVT-SUBNETs
 }
+module "rds" {
+  source = "./modules/rds"
+  engine = var.engine
+  engine_version = var.engine_version
+  env = var.env
+  subnets = module.vpc.PVT-SUBNETs
+  vpc_id = module.vpc.vpc_id
+  app_port = 3306
+  sg_ingress_cidr = var.vpc_cidr
+  instance_class = var.instance_class
+}

@@ -46,3 +46,15 @@ variable "app_port" {
 variable "terraform_controller_instance" {
   
 }
+variable "engine" {
+  
+}
+variable "engine_version" {
+  
+}
+variable "env" {
+  
+}
+variable "instance_class" {
+  
+}
