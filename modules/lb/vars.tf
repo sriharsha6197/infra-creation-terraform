@@ -19,3 +19,9 @@ variable "sg_ingress_cidr" {
 variable "internal" {
   
 }
+variable "dns_name" {
+  
+}
+variable "component" {
+  
+}

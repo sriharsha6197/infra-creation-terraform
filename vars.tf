@@ -55,3 +55,6 @@ variable "engine_version" {
 variable "instance_class" {
   
 }
+variable "dns_name" {
+  
+}

@@ -13,20 +13,25 @@ module "public" {
   env = var.env
   alb_type = "public"
   internal = false
+  component = "frontend"
   sg_ingress_cidr = "0.0.0.0/0"
   vpc_id = module.vpc.vpc_id
   from_port = var.from_port
   subnets = module.vpc.PB_SUBNETs
+  dns_name = "${var.env}.${var.component}.sriharsha.cloudns.ch"
 }
 module "private" {
   source = "./modules/lb"
   env = var.env
   alb_type = "private"
+  component = "backend"
   vpc_id = module.vpc.vpc_id
   internal = true
   from_port = var.from_port
   subnets = module.vpc.PVT-SUBNETs
   sg_ingress_cidr = var.vpc_cidr
+  dns_name = "${var.env}.${var.component}.sriharsha.cloudns.ch"
+  
 }
 module "frontend" {
   source = "./modules/lt"

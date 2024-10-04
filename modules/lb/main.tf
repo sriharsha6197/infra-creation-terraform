@@ -23,7 +23,7 @@ resource "aws_vpc_security_group_egress_rule" "allow_all_traffic_ipv4" {
 }
 
 resource "aws_lb" "test" {
-  name               = "${var.env}-${var.alb_type}-lb"
+  name               = "${var.env}-${var.alb_type}-lb-${var.component}"
   internal           = var.internal
   load_balancer_type = "application"
   security_groups    = [aws_security_group.allow_tls.id]
@@ -32,4 +32,12 @@ resource "aws_lb" "test" {
   tags = {
     Environment = "${var.env}-${var.alb_type}-lb"
   }
+}
+
+resource "aws_route53_record" "www" {
+  zone_id = data.aws_route53_zone.selected.zone_id
+  name    = var.dns_name
+  type    = "CNAME"
+  ttl     = 300
+  records = [aws_lb.test.dns_name]
 }
