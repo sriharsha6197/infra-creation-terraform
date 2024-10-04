@@ -18,7 +18,7 @@ module "public" {
   vpc_id = module.vpc.vpc_id
   from_port = var.from_port
   subnets = module.vpc.PB_SUBNETs
-  dns_name = "${var.env}.${var.component}.sriharsha.cloudns.ch"
+  dns_name = "${var.env}.frontend.sriharsha.cloudns.ch"
 }
 module "private" {
   source = "./modules/lb"
@@ -30,7 +30,7 @@ module "private" {
   from_port = var.from_port
   subnets = module.vpc.PVT-SUBNETs
   sg_ingress_cidr = var.vpc_cidr
-  dns_name = "${var.env}.${var.component}.sriharsha.cloudns.ch"
+  dns_name = "${var.env}.backend.sriharsha.cloudns.ch"
   
 }
 module "frontend" {
