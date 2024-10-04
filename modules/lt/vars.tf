@@ -22,6 +22,3 @@ variable "app_port" {
 variable "terraform_controller_instance" {
   
 }
-variable "from_port" {
-  
-}
