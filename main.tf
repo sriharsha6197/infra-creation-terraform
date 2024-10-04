@@ -34,6 +34,7 @@ module "frontend" {
   component = "frontend"
   sg_ingress_cidr = var.vpc_cidr
   terraform_controller_instance = var.terraform_controller_instance
+  from_port = var.from_port
   app_port = 80
   instance_type = var.instance_type
   vpc_id = module.vpc.vpc_id
@@ -44,7 +45,8 @@ module "backend" {
   env = var.env
   component = "backend"
   sg_ingress_cidr = var.vpc_cidr
-  terraform_controller_instance = var.vpc_cidr
+  terraform_controller_instance = var.terraform_controller_instance
+  from_port = var.from_port
   app_port = 8080
   instance_type = var.instance_type
   vpc_id = module.vpc.vpc_id
