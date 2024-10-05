@@ -25,3 +25,6 @@ variable "dns_name" {
 variable "component" {
   
 }
+variable "tg_arn" {
+  
+}
