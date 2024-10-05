@@ -112,7 +112,7 @@ resource "aws_autoscaling_group" "bar" {
 
 resource "aws_lb_target_group" "main" {
   name     = "${var.env}-tg-${var.component}"
-  port     = 80
+  port     = var.app_port
   protocol = "HTTP"
   vpc_id   = var.vpc_id
   deregistration_delay = 20
