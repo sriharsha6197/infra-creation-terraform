@@ -13,9 +13,6 @@ variable "azs" {
 variable "private_subnets" {
   
 }
-variable "private_azs" {
-  
-}
 variable "from_port" {
   type = set(string)
 }
