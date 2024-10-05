@@ -52,3 +52,17 @@ resource "aws_lb_listener" "http" {
     target_group_arn = var.tg_arn
   }
 }
+
+resource "aws_lb_listener" "https" {
+  count = var.alb_type == "public" ? 1 :0
+  load_balancer_arn = aws_lb.test.arn
+  port              = "443"
+  protocol          = "HTTPS"
+  ssl_policy        = "ELBSecurityPolicy-2016-08"
+  certificate_arn   = "arn:aws:acm:us-east-1:913524933378:certificate/c69bb7af-6788-449e-8951-d23b155927e9"
+
+  default_action {
+    type             = "forward"
+    target_group_arn = var.tg_arn
+  }
+}
