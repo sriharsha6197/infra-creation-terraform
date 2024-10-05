@@ -1,4 +1,4 @@
 data "aws_route53_zone" "selected" {
-  name         = "sriharsha.cloudns.ch"
+  name         = "harsha.shop"
   private_zone = false
 }
