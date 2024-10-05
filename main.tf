@@ -31,7 +31,6 @@ module "private" {
   subnets = module.vpc.PVT-SUBNETs
   sg_ingress_cidr = var.vpc_cidr
   dns_name = "${var.env}.backend.sriharsha.cloudns.ch"
-  
 }
 module "frontend" {
   source = "./modules/lt"
@@ -45,6 +44,7 @@ module "frontend" {
   subnets = module.vpc.PVT-SUBNETs
 }
 module "backend" {
+  depends_on = [ module.rds ]
   source = "./modules/lt"
   env = var.env
   component = "backend"

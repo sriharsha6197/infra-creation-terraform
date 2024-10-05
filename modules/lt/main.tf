@@ -103,8 +103,16 @@ resource "aws_autoscaling_group" "bar" {
   max_size           = 1
   min_size           = 1
   vpc_zone_identifier = var.subnets
+  target_group_arns = [aws_lb_target_group.main.arn]
   launch_template {
     id      = aws_launch_template.foo.id
     version = "$Latest"
   }
+}
+
+resource "aws_lb_target_group" "main" {
+  name     = "${var.env}-tg-${var.component}"
+  port     = 80
+  protocol = "HTTP"
+  vpc_id   = var.vpc_id
 }
