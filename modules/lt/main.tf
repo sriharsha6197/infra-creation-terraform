@@ -120,7 +120,7 @@ resource "aws_lb_target_group" "main" {
     enabled = true
     healthy_threshold = 2
     interval = 5
-    path = "/health"
+    path = "/"
     unhealthy_threshold = 2
     port = var.app_port
     timeout = 3
