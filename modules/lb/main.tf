@@ -43,6 +43,7 @@ resource "aws_route53_record" "www" {
 }
 
 resource "aws_lb_listener" "http" {
+  count = var.alb_type == "private" ? 1 : 0
   load_balancer_arn = aws_lb.test.arn
   port              = "80"
   protocol          = "HTTP"
