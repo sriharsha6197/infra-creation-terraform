@@ -43,6 +43,9 @@ module "frontend" {
   instance_type = var.instance_type
   vpc_id = module.vpc.vpc_id
   subnets = module.vpc.PVT-SUBNETs
+  desired_capacity = var.desired_capacity
+  max_size = var.max_size
+  min_size = var.min_size
 }
 module "backend" {
   depends_on = [ module.rds ]
@@ -55,6 +58,9 @@ module "backend" {
   instance_type = var.instance_type
   vpc_id = module.vpc.vpc_id
   subnets = module.vpc.PVT-SUBNETs
+  desired_capacity = var.desired_capacity
+  max_size = var.max_size
+  min_size = var.min_size
 }
 module "rds" {
   source = "./modules/rds"

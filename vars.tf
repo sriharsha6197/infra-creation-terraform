@@ -55,3 +55,12 @@ variable "instance_class" {
 variable "dns_name" {
   
 }
+variable "desired_capacity" {
+  
+}
+variable "max_size" {
+  
+}
+variable "min_size" {
+  
+}

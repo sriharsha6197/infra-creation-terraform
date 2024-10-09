@@ -22,3 +22,12 @@ variable "app_port" {
 variable "terraform_controller_instance" {
   
 }
+variable "desired_capacity" {
+  
+}
+variable "max_size" {
+  
+}
+variable "min_size" {
+  
+}

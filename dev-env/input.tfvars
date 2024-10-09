@@ -18,3 +18,6 @@ engine_version="5.7.mysql_aurora.2.11.3"
 instance_class = "db.t3.medium"
 dns_name=""
 tg_arn = ""
+desired_capacity = 1
+max_size = 1
+min_size = 1
