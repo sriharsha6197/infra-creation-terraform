@@ -64,3 +64,6 @@ variable "max_size" {
 variable "min_size" {
   
 }
+variable "prometheus_cidr" {
+  
+}
