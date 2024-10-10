@@ -21,4 +21,4 @@ tg_arn = ""
 desired_capacity = 1
 max_size = 1
 min_size = 1
-prometheus_cidr = ""
+prometheus_cidr = "172.31.43.166/32"
