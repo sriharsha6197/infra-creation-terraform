@@ -22,7 +22,7 @@ resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4_ssh" {
   ip_protocol       = "tcp"
   to_port           = 22
 }
-resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4_ssh" {
+resource "aws_vpc_security_group_ingress_rule" "allow_tls_ipv4_ssh_prometheus" {
   security_group_id = aws_security_group.allow_tls.id
   cidr_ipv4         = var.prometheus_cidr
   from_port         = 9100
