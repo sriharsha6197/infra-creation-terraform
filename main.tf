@@ -46,6 +46,7 @@ module "frontend" {
   desired_capacity = var.desired_capacity
   max_size = var.max_size
   min_size = var.min_size
+  prometheus_cidr = var.prometheus_cidr
 }
 module "backend" {
   depends_on = [ module.rds ]
@@ -61,6 +62,7 @@ module "backend" {
   desired_capacity = var.desired_capacity
   max_size = var.max_size
   min_size = var.min_size
+  prometheus_cidr = var.prometheus_cidr
 }
 module "rds" {
   source = "./modules/rds"
