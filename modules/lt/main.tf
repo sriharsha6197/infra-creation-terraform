@@ -96,6 +96,7 @@ resource "aws_launch_template" "foo" {
       Name = "${var.env}-lt-${var.component}"
     }
   }
+  
 }
 
 resource "aws_autoscaling_group" "bar" {
@@ -108,6 +109,11 @@ resource "aws_autoscaling_group" "bar" {
   launch_template {
     id      = aws_launch_template.foo.id
     version = "$Latest"
+  }
+  tag {
+    key                 = "project"
+    value               = "expense"
+    propagate_at_launch = true
   }
 }
 
