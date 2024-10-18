@@ -4,8 +4,7 @@ pipeline{
         choice(name: 'ENV', choices: ['dev', 'prod'], description: 'select environment')
     }
     options{
-        ansiColor('xterm') {
-     }
+        ansiColor('xterm') 
     }
 
     stages{
